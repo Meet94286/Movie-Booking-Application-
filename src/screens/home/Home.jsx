@@ -76,7 +76,7 @@ const releasedMovieStyles = makeStyles((theme) => ({
 }));
 
 
-export  function GridList1() {
+export  function ReleasedMovies() {
   const classes = useStyles();
 
   return (
