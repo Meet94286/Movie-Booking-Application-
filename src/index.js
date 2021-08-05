@@ -1,18 +1,20 @@
-import { GridList, ReleasedMovies } from './screens/home/Home';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './screens/home/Home';
-
+import FilterCard from './screens/home/FilterCard';
+import ReleasedMovies from './screens/home/ReleasedMovies';
+import UpcomingMovies from './screens/home/UpcomingMovies';
 ReactDOM.render(
   <div>
     <Home/>
-    <GridList/>
+    <UpcomingMovies/>
     <div className="flex-container">
       <div className="left">
         <ReleasedMovies/>
       </div>
       <div className="right">
+        <FilterCard/>
         </div>
     </div>
   </div>, document.getElementById('root'));
