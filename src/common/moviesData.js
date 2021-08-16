@@ -256,4 +256,15 @@ let moviesData = [
     }
 ]
 
+
+export function filterByMovieid(id) {
+
+   return moviesData.find((movie)=>movie.id === id)
+
+}
+
+
+    
+
+
 export default moviesData;
