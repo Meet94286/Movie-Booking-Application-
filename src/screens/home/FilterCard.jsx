@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles,useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -15,6 +15,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import artists from '../../common/artists';
+import { useState } from 'react';
+import moviesData from '../../common/moviesData';
 
 
 const useStyles = makeStyles((theme)=>({
@@ -57,40 +59,36 @@ const MenuProps = {
   },
 };
 
-export default function FilterCard() {
+export default function FilterCard(props) {
   const classes = useStyles();
 
-  const [genreName, setgenreName] = React.useState([]);
-  const [artistName, setartistName] = React.useState([]);
 
-  const handleChange = (event) => {
-    setgenreName(event.target.value);
-  };
-
-  const handleChange1 = (event) => {
-    setartistName(event.target.value);
-  };
-
+ 
 
   return (
+    <>
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title}  gutterBottom>
           FIND MOVIES BY:
         </Typography>
+     
         <form className={classes.root} noValidate autoComplete="off">
-          <TextField id="standard-basic"  label="Movie Name" />
+          <TextField id="standard-basic" 
+          value={props.movieName}
+          onChange={(event)=>props.setMovieName(event.target.value)}
+          label="Movie Name" />
         </form>
         <FormControl className={classes.genreStyles} >
         <InputLabel id="demo-mutiple-checkbox-label" >Genres</InputLabel>
-        <Select labelId="demo-mutiple-checkbox-label"id="demo-mutiple-checkbox" multiple value={genreName}
-          onChange={handleChange}
+        <Select labelId="demo-mutiple-checkbox-label"id="demo-mutiple-checkbox" multiple value={props.genreName}
+         onChange={(event)=>props.setGenreName(event.target.value)}
           input={<Input />}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}>
           {genres.map((name) => (
             <MenuItem key={name.name} value={name.name}>
-              <Checkbox checked={genreName.indexOf(name.name) > -1} />
+              <Checkbox checked={props.genreName.indexOf(name.name) > -1} />
               <ListItemText primary={name.name} />
             </MenuItem>
           ))}
@@ -102,15 +100,15 @@ export default function FilterCard() {
           labelId="demo-mutiple-checkbox-label"
           id="demo-mutiple-checkbox"
           multiple
-          value={artistName}
-          onChange={handleChange1}
+          value={props.artistName}
+          onChange={(event)=>props.setArtistName(event.target.value)}
           input={<Input />}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
           {artists.map((name) => (
             <MenuItem key={name.first_name + name.last_name} value={name.first_name + " " + name.last_name}>
-              <Checkbox checked={artistName.indexOf(name.first_name + " "+  name.last_name) > -1} />
+              <Checkbox checked={props.artistName.indexOf(name.first_name + " " + name.last_name) > -1} />
               <ListItemText primary={name.first_name + " " + name.last_name} />
             </MenuItem>
           ))}
@@ -132,9 +130,19 @@ export default function FilterCard() {
       </form>
       </CardContent>
       <CardActions>
-      <Button className={classes.buttonStyle} variant="contained" color="primary">APPLY</Button>      
+      <Button className={classes.buttonStyle}
+       variant="contained"
+        color="primary"
+        onClick={props.filterBy}
+        >APPLY</Button>      
       </CardActions>
     </Card>
+
+
+   
+    </>
   );
 }
+
+ 
 
