@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Details from './screens/details/Details';
 import Home from './screens/home/Home';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import FilterCard from './screens/home/FilterCard';
+import {BrowserRouter, Route} from "react-router-dom";
+import BookShow from './screens/bookshow/BookShow';
 
 
 ReactDOM.render(
@@ -13,7 +13,9 @@ ReactDOM.render(
       
      <Route exact path ="/" component={Home}/>
      <Route exact path="/details/:id"  component={Details}/>
-     
+     <Route exact path="/bookshow/:id"  component={BookShow}/>
+  
+    
      </div>
    </BrowserRouter>
    , document.getElementById('root'));
