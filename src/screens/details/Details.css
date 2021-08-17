@@ -27,3 +27,6 @@
 .star:hover{
     color: orange;
 }
+.bookshow-btn {
+    text-decoration-line: none;
+}
