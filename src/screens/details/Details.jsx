@@ -10,6 +10,8 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import { classes } from "istanbul-lib-coverage";
 import Rating from '@material-ui/lab/Rating';
+import Header from "../../common/header/Header";
+import { useState } from "react";
 
 
 export default function Details(props) {
@@ -36,9 +38,17 @@ export default function Details(props) {
   
     return (
     <div>
-          <div className="header">
-            <img id="logo" src= {logo} alt="logo"/>
-            <Button variant="contained" color="primary">BOOK SHOW</Button>
+          <div className="header" style={{display: "contents"}}>
+           <Header/>
+           <div style={{
+                    position: "absolute",
+                    left: "81%",
+                    top: "8.4px",
+                }}>
+                  <Link className="bookshow-btn" to={`/bookshow/${id}`}>
+                    <Button variant="contained"  color="primary" >BOOK SHOW</Button>
+                    </Link>
+                </div>
             </div>
             <Link className="btn" to="/">
               <div style={{display: "flex"}}>
