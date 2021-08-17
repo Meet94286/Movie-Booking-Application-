@@ -1,14 +1,22 @@
-import React from "react";
+import { Button } from "@material-ui/core";
+import { logDOM } from "@testing-library/react";
+import React, { useState } from "react";
 import './Header.css';
-let logo = `https://cdn.upgrad.com/uploads/production/286e1f11-1897-4d0c-ab0f-6b2bfc1ce642/logo.svg`;
+import logo from '../../assets/logo.svg';
 
-class Header extends React.Component{
-    render(){
+ function  Header(){
+   const[login,setLogin] = useState(false);
+
+   function handleLogin(){
+       setLogin(!login);
+   }
         return(
+
             <div className="header">
                 <img id="logo" src= {logo} alt="logo"/>
+                <Button variant="contained" color="default" onClick={handleLogin}>{login ? "LOGOUT" : "LOGIN"}</Button>
             </div>
         );
-    }
+    
 }
 export default Header;
