@@ -15,8 +15,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import artists from '../../common/artists';
-import { useState } from 'react';
-import moviesData from '../../common/moviesData';
 
 
 const useStyles = makeStyles((theme)=>({
@@ -115,14 +113,14 @@ export default function FilterCard(props) {
         </Select>
         </FormControl>
         <form  noValidate>
-        <TextField id="date" label="Release Date Start" type="date" className={classes.genreStyles}
+        <TextField id="date" value={props.releaseDate}  onChange={(event)=> props.setReleaseDate(event.target.value)} label="Release Date Start" type="date" className={classes.genreStyles}
          InputLabelProps={{
           shrink: true,
         }}
       />
       </form>
       <form  noValidate>
-        <TextField id="date" label="Release Date End" type="date" className={classes.genreStyles}
+        <TextField id="date" value={props.endDate} onChange={(event)=>props.setendDate(event.target.value)} label="Release Date End" type="date" className={classes.genreStyles}
          InputLabelProps={{
           shrink: true,
         }}
