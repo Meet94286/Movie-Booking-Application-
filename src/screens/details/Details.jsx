@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { Button, ImageList, ImageListItem, makeStyles, Typography } from "@material-ui/core";
+import {  ImageList, ImageListItem, Typography } from "@material-ui/core";
 import './Details.css';
 import { filterByMovieid } from "../../common/moviesData";
 import '../../common/header/Header.css';
@@ -11,7 +11,6 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import { classes } from "istanbul-lib-coverage";
 import Rating from '@material-ui/lab/Rating';
 import Header from "../../common/header/Header";
-import { useState } from "react";
 
 
 export default function Details(props) {
@@ -39,15 +38,13 @@ export default function Details(props) {
     return (
     <div>
           <div className="header" style={{display: "contents"}}>
-           <Header/>
+           <Header showBookShowButton="true" />
            <div style={{
                     position: "absolute",
                     left: "81%",
                     top: "8.4px",
                 }}>
-                  <Link className="bookshow-btn" to={`/bookshow/${id}`}>
-                    <Button variant="contained"  color="primary" >BOOK SHOW</Button>
-                    </Link>
+                
                 </div>
             </div>
             <Link className="btn" to="/">
