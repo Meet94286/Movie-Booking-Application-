@@ -39,6 +39,8 @@ const releasedMovieStyles = makeStyles((theme) => ({
   const[movieName,setMovieName]=useState("");
   const[genreName,setGenreName]= useState([]);
   const[artistName,setArtistName]= useState([]);
+  const[releaseDate,setReleaseDate]=useState("");
+  const[endDate,setendDate]=useState("");
 
 
    function filterByMovieName(moviesData){
@@ -84,26 +86,24 @@ const releasedMovieStyles = makeStyles((theme) => ({
     );
     }
 
-    
-   
-   
-
-
+    function filterByReleaseStartDate(moviesData){
+      if(!releaseDate){
+       
+        return moviesData;
+      }
+      console.log(releaseDate);
+      return moviesData.filter((item)=>(((item.release_date).split("T")[0]) === releaseDate))
+      }
 
   function filterBy(event){
 
     let filteredMovieByName = filterByMovieName(moviesData);
     let filteredMovieByGenre = filterByGenreName(filteredMovieByName);
     let filteredMovieByArtist = filterByArtistName(filteredMovieByGenre);
-    setData(filteredMovieByArtist);
-     
+    let filteredMovieByDate = filterByReleaseStartDate(filteredMovieByArtist);
+    setData(filteredMovieByDate);
   }
-  
-
-
-  
-    
-    return (
+  return (
       <div>
       <div style={{display:"flex"}}>
         <div className="left">
@@ -140,6 +140,10 @@ const releasedMovieStyles = makeStyles((theme) => ({
        setGenreName={setGenreName}
        artistName={artistName}
        setArtistName={setArtistName}
+       releaseDate={releaseDate}
+       setReleaseDate={setReleaseDate}
+       endDate={endDate}
+       setendDate={setendDate}
        
        />
 
